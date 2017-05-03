@@ -1,0 +1,23 @@
+{
+    "author": "James Stephens",
+    "description": "Allows users to browse the internet with a Leap Motion controller.",
+    "name": "Browse With Leap Motion",
+    "version": "1.0",
+                    
+    "icons": {
+        "20": "icons/border-20.png"
+    },
+
+    "permissions": [
+        "tabs",
+        "<all_urls>"
+    ],
+
+    "content_scripts":
+    [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["BrowseWithLeap.js"]
+        }
+    ]
+}
