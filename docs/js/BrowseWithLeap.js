@@ -1,12 +1,15 @@
 var canClick = true;
 
+
 document.addEventListener("DOMContentLoaded", function (event) {
     if (Leap) {
         var pointer = document.createElement('div');
         pointer.id = 'pointer';
         document.body.insertBefore(pointer, document.body.firstChild);
 
-        Leap.loop(null, function (frame) {
+        var status = document.getElementById("status");
+
+        var controller = Leap.loop(null, function (frame) {
             if (frame.hands.length > 0) {
                 var hand = GetHand(frame.hands, settings.scrollHand);
 
@@ -19,6 +22,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ClearPoint(pointer);
             }
         })
+
+        controller.on('deviceAttached', function () {
+            var status = document.getElementById("status");
+            status.innerText = "Attached";
+            status.style.color = "green";
+        });
+
+
+
+        controller.on('deviceDisconnected', function () {
+            var status = document.getElementById("status");
+            status.innerText = "Disconnected";
+            status.style.color = "darkred";
+        });
     }
 });
 
