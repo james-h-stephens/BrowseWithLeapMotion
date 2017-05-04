@@ -4,8 +4,8 @@ if (Leap) {
     var pointer = document.createElement('div');
     pointer.id = 'pointer';
     pointer.className = 'pointer';
-    pointer.style = "border-radius: 50%;position: absolute;visibility: hidden;z-index: 1000;";
-    document.getElementsByTagName('body')[0].appendChild(pointer);
+    pointer.style = "border-radius: 50%;position: absolute;visibility: hidden;z-index: 10000;";
+    document.body.insertBefore(pointer, document.body.firstChild);
 
     Leap.loop(null, function (frame) {
         if (frame.hands.length > 0) {
@@ -64,14 +64,23 @@ function AllFingersExtended(hand) {
 
 function Point(iBox, hand, div) {
     if (OnlyPointerExtended(hand)) {
-        DrawPoint(iBox, hand, div, "rgba(255,0,0,.5)")
+        DrawPoint(GetPoint(iBox, hand), div, settings.pointerColor);
     }
     else {
         if (PointerAndThumbExtended(hand)) {
-            DrawPoint(iBox, hand, div, "rgba(0,0,255,.5)");
+            var point = GetPoint(iBox, hand);
+            DrawPoint(point, div, settings.clickerColor);
 
             if (canClick) {
+                var anchor = FindClosestAnchor(point);
 
+                if (anchor) {
+                    anchor.click();
+                    canClick = false;
+                    window.setTimeout(function () {
+                        canClick = true;
+                    }, settings.clickDelay);
+                }
             }
         }
         else {
@@ -88,20 +97,28 @@ function PointerAndThumbExtended(hand) {
     return hand.fingers[0].extended && hand.fingers[1].extended && !hand.fingers[2].extended && !hand.fingers[3].extended && !hand.fingers[4].extended;
 }
 
-function DrawPoint(iBox, hand, div, color) {
+function GetPoint(iBox, hand) {
     var point = iBox.normalizePoint(hand.fingers[1].tipPosition);
 
     var wh = window.innerHeight;
     var ww = window.innerWidth;
 
-    var size = (1 - Math.min(.6, Math.max(0, Math.abs(point[2] - .5)))) * 50;
     var offset = GetOffset();
+    var size = (1 - Math.min(.6, Math.max(0, Math.abs(point[2] - .5)))) * 50;
 
-    div.style.width = size + "px";
-    div.style.height = size + "px";
+    return [
+        point[0] * ww + offset.left + (size / 2),
+        (1 - point[1]) * wh + offset.top + (size / 2),
+        size
+    ]
+}
+
+function DrawPoint(point, div, color) {
     div.style.background = color;
-    div.style.left = point[0] * ww + offset.left + "px";
-    div.style.top = (1 - point[1]) * wh + offset.top + "px";
+    div.style.left = point[0] + "px";
+    div.style.top = point[1] + "px";
+    div.style.width = point[2] + "px";
+    div.style.height = point[2] + "px";
     div.style.visibility = "visible";
 }
 
@@ -116,4 +133,28 @@ function GetOffset() {
 
 function ClearPoint(div) {
     div.style.visibility = "hidden";
+}
+
+function FindClosestAnchor(point) {
+    var anchor = null;
+
+
+    var offset = GetOffset();
+
+    var parent = document.elementFromPoint(point[0] - offset.left, point[1] - offset.top);
+
+    if (parent) {
+
+        if (parent.tagName.toLowerCase() === "a") {
+            anchor = parent;
+        }
+        else {
+            var anchors = parent.getElementsByTagName('a');
+            if (anchors.length > 0) {
+                anchor = anchors[0];
+            }
+        }
+    }
+
+    return anchor
 }
