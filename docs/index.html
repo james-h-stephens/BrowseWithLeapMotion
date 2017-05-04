@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Browse with Leap Motion">
+    <meta name="author" content="James Stephens">
 
-    <title>New Age - Start Bootstrap Theme</title>
+    <title>Browse with Leap Motion</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +34,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--Browse With Leap Motion Code-->
+    <script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/BrowseWithLeap.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -45,17 +50,20 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Browse with Leap Motion</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#download">Download</a>
+                        <a class="page-scroll" href="#try">Try it out</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">Download</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -73,8 +81,8 @@
                 <div class="col-sm-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
-                            <a href="#download" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>
+                            <h1>Browse with Leap Motion is a browser extension that allows you to use your Leap Motion to browse any site!</h1>
+                            <a href="#try" class="btn btn-outline btn-xl page-scroll">Try it now!</a>
                         </div>
                     </div>
                 </div>
@@ -97,16 +105,18 @@
         </div>
     </header>
 
-    <section id="download" class="download bg-primary text-center">
+    <section id="try" class="download bg-primary text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
-                    <div class="badges">
-                        <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
-                        <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
-                    </div>
+                    <h2 class="section-heading">Preview</h2>
+                    <p>
+                        This site has the extension code adapted to use on this site as a preview. To scroll simply hold your hand flat over your Leap Motion. When you extend your fingers toward 
+                        the ceiling, the page will scroll up. When you flex your fingers toward the floor, the page will scroll down.
+                    </p>
+                    <p>
+                        Extend only your pointer finger to move the Leap Motion cursor. To click, extend your thumb.
+                    </p>
                 </div>
             </div>
         </div>
@@ -178,6 +188,21 @@
         </div>
     </section>
 
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
+                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                    <div class="badges">
+                        <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
+                        <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="cta-content">
             <div class="container">
@@ -190,7 +215,7 @@
 
     <section id="contact" class="contact bg-primary">
         <div class="container">
-            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+            <h2>Contributions Welcome!</h2>
             <ul class="list-inline list-social">
                 <li class="social-twitter">
                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -207,18 +232,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
+            <p>&copy; 2017 James Stephens. Code released under the <a href="https://github.com/james-h-stephens/BrowseWithLeapMotion/blob/master/docs/LICENSE">MIT license</a>.</p>
         </div>
     </footer>
 
