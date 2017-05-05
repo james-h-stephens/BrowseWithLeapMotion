@@ -35,12 +35,31 @@
     <![endif]-->
     <!--Browse With Leap Motion Code-->
     <script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/BrowseWithLeap.js"></script>
+    <script src="https://rawgit.com/james-h-stephens/BrowseWithLeapMotion/master/lib/BrowseWithLeap.js"></script>
 
 </head>
 
 <body id="page-top">
+
+    <script>
+        BrowseWithLeap.DeviceAttached = function () {
+            var status = document.getElementById("status");
+            status.innerText = "Attached";
+            status.style.color = "black";
+        }
+
+        BrowseWithLeap.DeviceStreaming = function () {
+            var status = document.getElementById("status");
+            status.innerText = "Connected";
+            status.style.color = "green";
+        }
+
+        BrowseWithLeap.DeviceStopped = function () {
+            var status = document.getElementById("status");
+            status.innerText = "Disconnected";
+            status.style.color = "darkred";
+        }
+    </script>
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -60,9 +79,6 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="#features">Features</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#download">Download</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
