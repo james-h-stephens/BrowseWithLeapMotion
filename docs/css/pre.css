@@ -11,3 +11,9 @@
         display: block;
     }
 }
+
+@media(min-width: 768px) {
+    .code {
+        font-size: 18px
+    }
+}
