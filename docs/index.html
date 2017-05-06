@@ -151,24 +151,25 @@
                         <h2>Add to your site!</h2>
                         <p class="text-muted">Include this library with a single script reference and have your website navicable by Leap Motion.</p>
                         <hr>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>Add to Your Site</h3>
+                        <p>
+                            To use the BrowseWithLeap library, simply download the library <a href="https://rawgit.com/james-h-stephens/BrowseWithLeapMotion/master/lib/BrowseWithLeap.js">here</a> and add this reference to your HTML:
+                        </p>
                         <br />
-                        <div class="col-md-6">
-                            <h3>Add to Your Site</h3>
-                            <p>
-                                To use the BrowseWithLeap library, simply download the library <a href="https://rawgit.com/james-h-stephens/BrowseWithLeapMotion/master/lib/BrowseWithLeap.js">here</a> and add this reference to your HTML:
-                            </p>
-                            <br />
-                            <br />
-                            <pre class="prettyprint lang-html code" style="padding: 10px;">&lt;script src="js/BrowseWithLeap.js"&gt;&lt;/script&gt;</pre>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>Attach to Events</h3>
-                            <p>
-                                The library exposes simple events to attach to the lifecycle of the Leap Motion controller. For example, in the <a class="page-scroll" href="#try">Preview</a>
-                                section, you can see the status of the device.  This is accomplished by the following code:
-                            </p>
-                            <br />
-                            <pre class="prettyprint lang-javascript code" style="padding: 10px;">
+                        <br />
+                        <pre class="prettyprint lang-html code" style="padding: 10px;">&lt;script src="js/BrowseWithLeap.js"&gt;&lt;/script&gt;</pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Attach to Events</h3>
+                        <p>
+                            The library exposes simple events to attach to the lifecycle of the Leap Motion controller. For example, in the <a class="page-scroll" href="#try">Preview</a>
+                            section, you can see the status of the device.  This is accomplished by the following code:
+                        </p>
+                        <br />
+                        <pre class="prettyprint lang-javascript code" style="padding: 10px;">
 BrowseWithLeap.DeviceAttached = function () {
     var status = 
         document.getElementById("status");
@@ -190,7 +191,6 @@ BrowseWithLeap.DeviceStopped = function () {
     status.style.color = "darkred";
 }
 </pre>
-                        </div>
                     </div>
                 </div>
             </div>
