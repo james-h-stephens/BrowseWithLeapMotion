@@ -36,6 +36,7 @@
     <!--Browse With Leap Motion Code-->
     <script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
     <script src="https://rawgit.com/james-h-stephens/BrowseWithLeapMotion/master/lib/BrowseWithLeap.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true"></script>
 
 </head>
 
@@ -78,7 +79,7 @@
                         <a class="page-scroll" href="#try">Try it out</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#features">Features</a>
+                        <a class="page-scroll" href="#features">Use it now</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -133,7 +134,9 @@
                     <p>
                         Extend only your pointer finger to move the Leap Motion cursor. To click, extend your thumb.
                     </p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ntPHP7df-p8" frameborder="0" allowfullscreen></iframe>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/ntPHP7df-p8" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,61 +147,45 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>Unlimited Features, Unlimited Fun</h2>
-                        <p class="text-muted">Check out what you can do with this app theme!</p>
+                        <h2>Add to your site!</h2>
+                        <p class="text-muted">Include this library with a single script reference and have your website navicable by Leap Motion.</p>
                         <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="device-container">
-                        <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt="">
-                                </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
+                        <br />
+                        <div class="col-md-6">
+                            <h3>Add to Your Site</h3>
+                            <p>
+                                To use the BrowseWithLeap library, simply download the library <a href="https://rawgit.com/james-h-stephens/BrowseWithLeapMotion/master/lib/BrowseWithLeap.js">here</a> and add this reference to your HTML:
+                            </p>
+                            <br />
+                            <br />
+                            <pre class="prettyprint lang-html" style="text-align:left;display:inline-block;padding:10px;">&lt;script src="js/BrowseWithLeap.js"&gt;&lt;/script&gt;</pre>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>Device Mockups</h3>
-                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-camera text-primary"></i>
-                                    <h3>Flexible Use</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
-                                    <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-lock-open text-primary"></i>
-                                    <h3>Open Source</h3>
-                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <h3>Attach to Events</h3>
+                            <p>
+                                The library exposes simple events to attach to the lifecycle of the Leap Motion controller. For example, in the <a class="page-scroll" href="#try">Preview</a>
+                                section, you can see the status of the device.  This is accomplished by the following code:
+                            </p>
+                            <br />
+                            <pre class="prettyprint lang-javascript" style="text-align:left;display:inline-block;padding:10px;">
+BrowseWithLeap.DeviceAttached = function () {
+    var status = document.getElementById("status");
+    status.innerText = "Attached";
+    status.style.color = "black";
+}
+
+BrowseWithLeap.DeviceStreaming = function () {
+    var status = document.getElementById("status");
+    status.innerText = "Connected";
+    status.style.color = "green";
+}
+
+BrowseWithLeap.DeviceStopped = function () {
+    var status = document.getElementById("status");
+    status.innerText = "Disconnected";
+    status.style.color = "darkred";
+}
+</pre>
                         </div>
                     </div>
                 </div>
